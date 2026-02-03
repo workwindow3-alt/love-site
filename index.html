@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Just For You 💖</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #fff0f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: white;
+      padding: 50px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+      max-width: 420px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flowers {
+      font-size: 80px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-top: 20px;
+      font-size: 28px;
+    }
+
+    p {
+      margin-top: 15px;
+      color: #555;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 14px 30px;
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 10px 20px rgba(255,77,109,0.4);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #e63956;
+    }
+
+    /* POPUP */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      max-width: 350px;
+      animation: pop 0.6s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .popup-box h2 {
+      color: #ff4d6d;
+      margin-bottom: 15px;
+    }
+
+    .hearts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: rise 5s linear infinite;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <div class="flowers">💐🌸🌹</div>
+    <h1>I hate you so much 😤</h1>
+    <p>
+      Like… seriously.  
+      Why do you make my heart do stupid things?
+    </p>
+    <button onclick="openLove()">Click if you dare 💖</button>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <h2>Okay I lied 😭❤️</h2>
+      <p>
+        I don’t hate you.  
+        I love you more than words,  
+        more than flowers,  
+        more than I pretend not to.
+      </p>
+      <p style="margin-top:15px;">You’re my favorite person 🌸</p>
+      <button onclick="closeLove()">Come back 💕</button>
+    </div>
+  </div>
+
+  <script>
+    function openLove() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closeLove() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // floating hearts
+    const hearts = document.getElementById("hearts");
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      hearts.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }, 400);
+  </script>
+
+</body>
+</html>
