@@ -23,13 +23,14 @@
         color: #ff1a75;
         text-align: center;
         font-size: 2em;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
-    /* Bouquet image */
+    /* Big bouquet */
     .bouquet {
-        width: 250px;
-        animation: float 3s ease-in-out infinite alternate;
+        width: 350px;
+        animation: float 4s ease-in-out infinite alternate;
+        z-index: 2;
     }
 
     @keyframes float {
@@ -44,9 +45,10 @@
         height: 25px;
         background: red;
         transform: rotate(45deg);
-        animation: pop 4s linear infinite;
         border-radius: 50%;
+        animation: pop 4s linear infinite;
         opacity: 0.8;
+        z-index: 1;
     }
 
     .heart::before,
@@ -72,78 +74,4 @@
     @keyframes pop {
         0% { transform: translateY(0) scale(0); opacity: 0; }
         50% { transform: translateY(-200px) scale(1); opacity: 1; }
-        100% { transform: translateY(-400px) scale(0.5); opacity: 0; }
-    }
-
-    /* Input box */
-    .message-box {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    input[type="text"] {
-        padding: 10px 15px;
-        border-radius: 10px;
-        border: 2px solid #ff1a75;
-        width: 250px;
-        font-size: 1em;
-        outline: none;
-    }
-
-    button {
-        margin-top: 15px;
-        padding: 10px 20px;
-        border-radius: 10px;
-        border: none;
-        background: #ff1a75;
-        color: white;
-        font-size: 1em;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background: #e60066;
-    }
-</style>
-</head>
-<body>
-
-<h1>I hate you more than words… and you’re so handsome oh my god 💖</h1>
-
-<img src="https://i.ibb.co/4Jm5p5D/realistic-roses-bouquet.png" alt="Bouquet of roses" class="bouquet">
-
-<div class="message-box">
-    <input type="text" placeholder="Write something for me...">
-    <button onclick="sendMessage()">Send</button>
-</div>
-
-<script>
-    // Pop hearts continuously
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.animationDuration = (2 + Math.random() * 3) + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-    }
-
-    setInterval(createHeart, 500);
-
-    // Input button action
-    function sendMessage() {
-        const input = document.querySelector('input[type="text"]');
-        if(input.value.trim() !== '') {
-            alert('He wrote: ' + input.value);
-            input.value = '';
-        } else {
-            alert('He needs to write something! 😏');
-        }
-    }
-</script>
-
-</body>
-</html>
-
+        100% { transform: translateY(-400px) scale(0.5);
