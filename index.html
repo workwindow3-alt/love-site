@@ -5,73 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Special Message</title>
 <style>
-    /* Reset styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #ffe6e6;
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    overflow:hidden;
+    font-family: Arial, sans-serif;
+  }
 
-    body {
-        background: #ffe6e6;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        overflow: hidden;
-        font-family: 'Arial', sans-serif;
-    }
+  h1 {
+    color:#ff1a75;
+    text-align:center;
+    font-size:2em;
+    margin-bottom:40px;
+  }
 
-    h1 {
-        color: #ff1a75;
-        text-align: center;
-        font-size: 2em;
-        margin-bottom: 30px;
-    }
+  /* Bouquet container */
+  .bouquet {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items:flex-end;
+    animation: float 3s ease-in-out infinite alternate;
+  }
 
-    /* Big bouquet */
-    .bouquet {
-        width: 350px;
-        animation: float 4s ease-in-out infinite alternate;
-        z-index: 2;
-    }
+  @keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+  }
 
-    @keyframes float {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-20px); }
-    }
+  /* Single flower */
+  .flower {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 20% 20%, #ff1a75, #ff66aa);
+    border-radius: 50%;
+    margin: 2px;
+    position: relative;
+  }
 
-    /* Hearts animation */
-    .heart {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        background: red;
-        transform: rotate(45deg);
-        border-radius: 50%;
-        animation: pop 4s linear infinite;
-        opacity: 0.8;
-        z-index: 1;
-    }
+  .flower::before {
+    content:'';
+    position:absolute;
+    width: 12px; height: 20px;
+    background: #228B22;
+    bottom: -20px;
+    left:14px;
+    border-radius:6px;
+  }
 
-    .heart::before,
-    .heart::after {
-        content: '';
-        position: absolute;
-        width: 25px;
-        height: 25px;
-        background: red;
-        border-radius: 50%;
-    }
+  /* Hearts animation */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    border-radius: 50%;
+    animation: pop 4s linear infinite;
+    opacity: 0.8;
+  }
 
-    .heart::before {
-        top: -12px;
-        left: 0;
-    }
-
-    .heart::after {
-        left: 12px;
-        top: 0;
-    }
-
-    @keyframes pop {
-        0% { transform: translateY(0) scale(0); opacity: 0; }
-        50% { transform: translateY(-200px) scale(1); opacity: 1; }
-        100% { transform: translateY(-400px) scale(0.5);
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radi
