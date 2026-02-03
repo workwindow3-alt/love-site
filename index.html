@@ -3,168 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Special Message</title>
+<title>Valentine Page</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    background: #ffe6e6;
-    height: 100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    overflow:hidden;
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:#ffc0cb;
     font-family: Arial, sans-serif;
-  }
-
-  h1 {
-    color:#ff1a75;
-    text-align:center;
-    font-size:2em;
-    margin-bottom:40px;
-  }
-
-  /* Bouquet container */
-  .bouquet {
-    position: relative;
-    width: 200px;
-    height: 300px;
     display:flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-items:flex-end;
-    animation: float 3s ease-in-out infinite alternate;
+    flex-direction:column;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    padding-top:40px;
   }
 
-  @keyframes float {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-15px); }
-  }
-
-  /* Single flower */
-  .flower {
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle at 20% 20%, #ff1a75, #ff66aa);
-    border-radius: 50%;
-    margin: 2px;
-    position: relative;
-  }
-
-  .flower::before {
-    content:'';
-    position:absolute;
-    width: 12px; height: 20px;
-    background: #228B22;
-    bottom: -20px;
-    left:14px;
-    border-radius:6px;
+  h1{
+    text-align:center;
+    color:#d147a3;
+    font-size:1.8em;
+    margin-bottom:30px;
+    max-width:90%;
   }
 
   /* Hearts animation */
-  .heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: red;
-    transform: rotate(45deg);
-    border-radius: 50%;
-    animation: pop 4s linear infinite;
-    opacity: 0.8;
+  .heart{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#d147a3;
+    transform:rotate(45deg);
+    border-radius:50%;
+    animation:pop 4s linear infinite;
+    opacity:0.8;
+  }
+  .heart::before,.heart::after{
+    content:'';
+    position:absolute;
+    width:20px; height:20px;
+    background:#d147a3;
+    border-radius:50%;
+  }
+  .heart::before{top:-10px; left:0;}
+  .heart::after{left:10px; top:0;}
+  @keyframes pop{
+    0%{transform:translateY(0) scale(0); opacity:0;}
+    50%{transform:translateY(-150px) scale(1); opacity:1;}
+    100%{transform:translateY(-300px) scale(0.5); opacity:0;}
   }
 
-  .heart::before,
-  .heart::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: red;
-    border-radius: 50%;
+  /* Option boxes */
+  .options{
+    display:flex;
+    gap:20px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .option{
+    background:#ffb6c1;
+    color:#800040;
+    padding:15px 30px;
+    border-radius:15px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:1.1em;
+    transition:0.3s;
+    text-align:center;
+  }
+  .option:hover{
+    background:#ff99b6;
   }
 
-  .heart::before { top: -10px; left: 0; }
-  .heart::after { left: 10px; top: 0; }
-
-  @keyframes pop {
-    0% { transform: translateY(0) scale(0); opacity:0; }
-    50% { transform: translateY(-200px) scale(1); opacity:1; }
-    100% { transform: translateY(-400px) scale(0.5); opacity:0; }
+  /* Response box */
+  #response{
+    margin-bottom:30px;
+    font-size:1.2em;
+    color:#800040;
+    text-align:center;
+    min-height:40px;
   }
 
-  /* Input box */
-  .message-box {
-    margin-top: 40px;
+  /* Input for Valentine plan */
+  .plan-box{
     display:flex;
     flex-direction:column;
     align-items:center;
+    margin-bottom:50px;
   }
-
-  input[type="text"] {
+  input[type="text"]{
     padding:12px 15px;
     border-radius:12px;
-    border:2px solid #ff1a75;
+    border:2px solid #d147a3;
     width:300px;
-    font-size:1em;
+    margin-bottom:10px;
     outline:none;
   }
-
-  button {
-    margin-top:15px;
+  button{
     padding:12px 25px;
     border-radius:12px;
     border:none;
-    background:#ff1a75;
+    background:#d147a3;
     color:white;
     font-size:1em;
     cursor:pointer;
   }
-
-  button:hover { background:#e60066; }
+  button:hover{
+    background:#a32b73;
+  }
 
 </style>
 </head>
 <body>
 
-<h1>I hate you more than words… and you’re so handsome oh my god 💖</h1>
+<h1>You asked me Valentine plan first… now are you going to do any work about being my Valentine or should I find another man?</h1>
 
-<div class="bouquet">
-  <div class="flower"></div>
-  <div class="flower"></div>
-  <div class="flower"></div>
-  <div class="flower"></div>
-  <div class="flower"></div>
-  <div class="flower"></div>
-  <div class="flower"></div>
-  <div class="flower"></div>
-  <div class="flower"></div>
+<div class="options">
+  <div class="option" onclick="choose('yes')">Yes</div>
+  <div class="option" onclick="choose('no')">No</div>
 </div>
 
-<div class="message-box">
-  <input type="text" placeholder="Write something for me...">
-  <button onclick="sendMessage()">Send</button>
+<div id="response"></div>
+
+<div class="plan-box">
+  <input type="text" placeholder="Tell me our Valentine plan..." id="planInput">
+  <button onclick="sendPlan()">Send</button>
 </div>
 
 <script>
-  // Pop hearts
+  // Hearts animation
   function createHeart(){
-    const heart = document.createElement('div');
+    const heart=document.createElement('div');
     heart.className='heart';
-    heart.style.left = Math.random()*window.innerWidth+'px';
-    heart.style.animationDuration = (2+Math.random()*3)+'s';
+    heart.style.left=Math.random()*window.innerWidth+'px';
+    heart.style.animationDuration=(2+Math.random()*3)+'s';
     document.body.appendChild(heart);
     setTimeout(()=>heart.remove(),4000);
   }
-  setInterval(createHeart,500);
+  setInterval(createHeart,400);
 
-  // Input box button
-  function sendMessage(){
-    const input = document.querySelector('input[type="text"]');
+  // Yes/No button logic
+  function choose(answer){
+    const response = document.getElementById('response');
+    if(answer==='yes'){
+      response.innerHTML = 'Do work, best decision, I\'m waiting Jan 💖';
+    } else {
+      response.innerHTML = '🔪 You just don\'t love me';
+    }
+  }
+
+  // Input box send
+  function sendPlan(){
+    const input = document.getElementById('planInput');
     if(input.value.trim()!==''){
-      alert('He wrote: '+input.value);
+      alert('Your Valentine plan: '+input.value);
       input.value='';
     } else {
-      alert('He needs to write something! 😏');
+      alert('Write something! 😏');
     }
   }
 </script>
