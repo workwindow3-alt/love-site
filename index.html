@@ -1,181 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Just For You 💖</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Message</title>
+<style>
+    /* Reset styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      height: 100vh;
-      background: linear-gradient(135deg, #ffd6e8, #fff0f6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .container {
-      background: white;
-      padding: 50px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-      max-width: 420px;
-      animation: fadeIn 1.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .flowers {
-      font-size: 80px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+        background: #ffe6e6;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
     }
 
     h1 {
-      color: #ff4d6d;
-      margin-top: 20px;
-      font-size: 28px;
+        color: #ff1a75;
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 20px;
     }
 
-    p {
-      margin-top: 15px;
-      color: #555;
-      font-size: 16px;
+    /* Bouquet image */
+    .bouquet {
+        width: 250px;
+        animation: float 3s ease-in-out infinite alternate;
     }
 
-    button {
-      margin-top: 30px;
-      padding: 14px 30px;
-      background: #ff4d6d;
-      color: white;
-      border: none;
-      border-radius: 40px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 10px 20px rgba(255,77,109,0.4);
+    @keyframes float {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
     }
 
-    button:hover {
-      transform: scale(1.05);
-      background: #e63956;
+    /* Hearts animation */
+    .heart {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: red;
+        transform: rotate(45deg);
+        animation: pop 4s linear infinite;
+        border-radius: 50%;
+        opacity: 0.8;
     }
 
-    /* POPUP */
-    .popup {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
+    .heart::before,
+    .heart::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: red;
+        border-radius: 50%;
     }
 
-    .popup-box {
-      background: white;
-      padding: 40px;
-      border-radius: 25px;
-      text-align: center;
-      max-width: 350px;
-      animation: pop 0.6s ease;
+    .heart::before {
+        top: -12px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: 12px;
+        top: 0;
     }
 
     @keyframes pop {
-      0% { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+        0% { transform: translateY(0) scale(0); opacity: 0; }
+        50% { transform: translateY(-200px) scale(1); opacity: 1; }
+        100% { transform: translateY(-400px) scale(0.5); opacity: 0; }
     }
 
-    .popup-box h2 {
-      color: #ff4d6d;
-      margin-bottom: 15px;
+    /* Input box */
+    .message-box {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .hearts {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
+    input[type="text"] {
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: 2px solid #ff1a75;
+        width: 250px;
+        font-size: 1em;
+        outline: none;
     }
 
-    .heart {
-      position: absolute;
-      color: #ff4d6d;
-      font-size: 20px;
-      animation: rise 5s linear infinite;
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        background: #ff1a75;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
     }
 
-    @keyframes rise {
-      from { transform: translateY(100vh); opacity: 1; }
-      to { transform: translateY(-10vh); opacity: 0; }
+    button:hover {
+        background: #e60066;
     }
-  </style>
+</style>
 </head>
-
 <body>
 
-  <div class="hearts" id="hearts"></div>
+<h1>I hate you more than words… and you’re so handsome oh my god 💖</h1>
 
-  <div class="container">
-    <div class="flowers">💐🌸🌹</div>
-    <h1>I hate you so much 😤</h1>
-    <p>
-      Like… seriously.  
-      Why do you make my heart do stupid things?
-    </p>
-    <button onclick="openLove()">Click if you dare 💖</button>
-  </div>
+<img src="https://i.ibb.co/4Jm5p5D/realistic-roses-bouquet.png" alt="Bouquet of roses" class="bouquet">
 
-  <div class="popup" id="popup">
-    <div class="popup-box">
-      <h2>Okay I lied 😭❤️</h2>
-      <p>
-        I don’t hate you.  
-        I love you more than words,  
-        more than flowers,  
-        more than I pretend not to.
-      </p>
-      <p style="margin-top:15px;">You’re my favorite person 🌸</p>
-      <button onclick="closeLove()">Come back 💕</button>
-    </div>
-  </div>
+<div class="message-box">
+    <input type="text" placeholder="Write something for me...">
+    <button onclick="sendMessage()">Send</button>
+</div>
 
-  <script>
-    function openLove() {
-      document.getElementById("popup").style.display = "flex";
+<script>
+    // Pop hearts continuously
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
     }
 
-    function closeLove() {
-      document.getElementById("popup").style.display = "none";
+    setInterval(createHeart, 500);
+
+    // Input button action
+    function sendMessage() {
+        const input = document.querySelector('input[type="text"]');
+        if(input.value.trim() !== '') {
+            alert('He wrote: ' + input.value);
+            input.value = '';
+        } else {
+            alert('He needs to write something! 😏');
+        }
     }
-
-    // floating hearts
-    const hearts = document.getElementById("hearts");
-
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 15 + "px";
-      hearts.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 5000);
-    }, 400);
-  </script>
+</script>
 
 </body>
 </html>
